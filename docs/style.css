@@ -62,6 +62,16 @@ html, body {
   opacity: 1;
 }
 
+#boot-ascii span {
+  display: block;
+  opacity: 0;
+  white-space: pre;
+}
+
+#boot-ascii span.visible {
+  opacity: 1;
+}
+
 .boot-green  { color: #4caf50; }
 .boot-yellow { color: #f0d060; }
 .boot-white  { color: #fff; }

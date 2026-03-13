@@ -4,6 +4,12 @@ function buildPage() {
     return '<span class="' + line.css + '">' + line.text + '</span>';
   }).join('');
 
+  var bootAscii = document.getElementById('boot-ascii');
+  var asciiText = bootAscii.textContent.replace(/\r/g, '').replace(/\n\s*$/, '');
+  bootAscii.innerHTML = asciiText.split('\n').map(function(line) {
+    return '<span>' + line + '</span>';
+  }).join('');
+
   document.getElementById('loading-title').textContent = 'MacOSski';
   document.getElementById('loading-subtitle').textContent = 'Get to know me.';
 
@@ -141,12 +147,23 @@ function buildStartMenuLinks() {
   var desktop       = document.getElementById('desktop');
   var taskbar       = document.getElementById('taskbar');
   var lines         = document.querySelectorAll('#boot-lines span');
+  var asciiLines    = document.querySelectorAll('#boot-ascii span');
 
   var lineIndex = 0;
+  var asciiIndex = 0;
   function showNextLine() {
-    if (lineIndex < lines.length) {
-      lines[lineIndex].classList.add('visible');
-      lineIndex++;
+    if (lineIndex < lines.length || asciiIndex < asciiLines.length) {
+      if (lineIndex < lines.length) {
+        lines[lineIndex].classList.add('visible');
+        lineIndex++;
+      }
+
+      var targetAsciiCount = Math.ceil((lineIndex / lines.length) * asciiLines.length);
+      while (asciiIndex < targetAsciiCount && asciiIndex < asciiLines.length) {
+        asciiLines[asciiIndex].classList.add('visible');
+        asciiIndex++;
+      }
+
       setTimeout(showNextLine, 120 + Math.random() * 180);
     } else {
       setTimeout(function() {
