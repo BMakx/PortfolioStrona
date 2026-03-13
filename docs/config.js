@@ -13,7 +13,7 @@ const CONFIG = {
   website: "https://nami.pwr.edu.pl",
   websiteLabel: "KN NaMi",
 
-  aboutMe: `I'm an engineer of Intelligent Electronics pursuing a Master's degree in Electronic Mechatronics Systems at Wroclaw University of Science and Technology, consistently among the top of my year. I'm passionate about the latest advances in AI and thin-film technologies used in modern electronics.<br><br>As President of <b>KN NaMi</b>, I lead a research group focused on micro- and nanotechnology projects.<br><br>Beyond academics, I'm deeply passionate about cinematography and I dream of creating my own films. I also enjoy music production and birdwatching.`,
+  aboutMe: `I'm an engineer of Smart Electronics pursuing a Master's degree in Electronic Mechatronics Systems at Wroclaw University of Science and Technology, consistently among the top of my year. I'm passionate about the latest advances in AI and thin-film technologies used in modern electronics.<br><br>As President of <b>KN NaMi</b>, I lead a research group focused on micro- and nanotechnology projects.<br><br>Beyond academics, I'm deeply passionate about cinematography and I dream of creating my own films. I also enjoy music production and birdwatching.`,
 
   experience: [
     {
@@ -86,7 +86,7 @@ const CONFIG = {
     },
     {
       date: "2022 - 2026",
-      title: "B.Eng. Intelligent Electronics",
+      title: "B.Eng. Smart Electronics",
       subtitle: "Wroclaw University of Science and Technology",
       highlight: false,
       bullets: [
