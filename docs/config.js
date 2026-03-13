@@ -1,7 +1,7 @@
 const CONFIG = {
 
   name: "Bartosz Makowski",
-  title: "Intelligent Electronics Engineer | Data Enthusiast | Filmmaker",
+  title: "Smart Electronics Engineer | Microelectronics Enthusiast | Filmmaker",
 
   photo: "",
 
