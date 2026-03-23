@@ -17,12 +17,21 @@ const CONFIG = {
 
   experience: [
     {
-      date: "09.2024 - present",
+      date: "01.2026 - present",
       title: "President @ KN NaMi",
       subtitle: "Student Research Group - Micro & Nanotechnology, Wroclaw University of Science and Technology",
       highlight: true,
       bullets: [
-        "Leading micro- and nanotechnology projects",
+        "Leading the organization and representing it externally",
+      ],
+    },
+    {
+      date: "09.2024 - 12.2025",
+      title: "Vice President @ KN NaMi",
+      subtitle: "Student Research Group - Micro & Nanotechnology, Wroclaw University of Science and Technology",
+      highlight: true,
+      bullets: [
+        "Creating and coordinating micro- and nanotechnology projects",
         "Managing a team of over a dozen members",
         "Establishing industry partnerships",
       ],
