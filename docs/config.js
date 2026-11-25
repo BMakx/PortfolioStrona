@@ -179,8 +179,6 @@ const CONFIG = {
     { icon: "\u{1F52C}", label: "Spin Coater",       desc: "KN NaMi project",                        url: "https://github.com/KN-NaMi/spin-coater",       folders: ["nami"] },
     { icon: "\u{1F52C}", label: "Spin Coater BLDC",  desc: "KN NaMi project",                        url: "https://github.com/KN-NaMi/spin-coater-BLDC",  folders: ["nami"] },
     { icon: "\u{1F310}", label: "KN NaMi",           desc: "Student research group - micro & nanotechnology", url: "https://nami.pwr.edu.pl", folders: ["all", "nami"] },
-    { icon: "\u{1F3B5}", label: "WebCamMusic",       desc: "Personal project",                       url: "https://github.com/BMakx/WebCamMusic",         folders: ["github"] },
-    { icon: "\u{1F3B9}", label: "DAWOnline",         desc: "Personal project",                       url: "https://github.com/BMakx/DAWOnline",           folders: ["github"] },
     { icon: "\u{1F511}", label: "SecurityRFID",      desc: "Personal project",                       url: "https://github.com/BMakx/SecurityRFID",        folders: ["github"] },
     { icon: "\u{1F4C1}", label: "GitHub",            desc: "All repositories",                       url: "https://github.com/BMakx",                     folders: ["all", "github"] },
   ],
