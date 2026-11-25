@@ -101,10 +101,17 @@ function skillCategories() {
   return cats;
 }
 
-function levelLabel(level) {
-  if (level >= 75) return 'Advanced';
-  if (level >= 55) return 'Proficient';
-  return 'Basic';
+var DRIVE_COLORS = ['#0a7a34', '#00007c', '#7b5b00'];
+
+function fileIcon(ext, color) {
+  return '<svg viewBox="0 0 40 48" width="40" height="48">' +
+    '<polygon points="4,2 28,2 36,10 36,46 4,46" fill="#fff" stroke="#000" stroke-width="2"/>' +
+    '<polygon points="28,2 36,10 28,10" fill="#c0c0c0" stroke="#000" stroke-width="2"/>' +
+    '<line x1="9" y1="16" x2="31" y2="16" stroke="#c0c0c0" stroke-width="2"/>' +
+    '<line x1="9" y1="21" x2="31" y2="21" stroke="#c0c0c0" stroke-width="2"/>' +
+    '<rect x="1" y="27" width="32" height="13" fill="' + color + '"/>' +
+    '<text x="17" y="37" text-anchor="middle" font-family="Tahoma, Arial, sans-serif" font-size="9" font-weight="bold" fill="#fff">.' + ext + '</text>' +
+    '</svg>';
 }
 
 var DRIVE_SVG = '<svg viewBox="0 0 48 32" width="48" height="32">' +
@@ -124,18 +131,22 @@ function buildMyComputer() {
 }
 
 function showDrive(cat) {
-  var items = CONFIG.skills.filter(function(s) { return s.category === cat; })
-    .sort(function(a, b) { return b.level - a.level; });
+  var color = DRIVE_COLORS[skillCategories().indexOf(cat) % DRIVE_COLORS.length];
+  var items = CONFIG.skills.filter(function(s) { return s.category === cat; });
   document.getElementById('skills-content').innerHTML = items.map(function(s) {
-    return '<div class="lv-row"><span class="lv-name">' + s.name + '</span>' +
-      '<span class="lv-level"><span class="lv-bar"><span class="skill-bar-inner" data-width="' + Math.round(s.level / 10) * 10 + '"></span></span>' +
-      '<span class="lv-text">' + levelLabel(s.level) + '</span></span></div>';
+    return '<div class="file-item" onclick="selectFile(this, \'' + s.type + '\')">' +
+      fileIcon(s.ext, color) + '<span>' + s.name + '</span></div>';
   }).join('');
   document.querySelectorAll('.drive').forEach(function(d) {
     d.classList.toggle('selected', d.dataset.cat === cat);
   });
   document.getElementById('skills-status').textContent = items.length + ' object(s)';
-  setTimeout(animateSkillBars, 50);
+}
+
+function selectFile(el, type) {
+  document.querySelectorAll('.file-item.selected').forEach(function(i) { i.classList.remove('selected'); });
+  el.classList.add('selected');
+  document.getElementById('skills-status').textContent = 'Type: ' + type;
 }
 
 function buildExplorerSidebar() {
@@ -219,7 +230,6 @@ function buildStartMenuLinks() {
     updateClock();
     setInterval(updateClock, 30000);
     setTimeout(function() { openWindow('about-window'); }, 300);
-    setTimeout(animateSkillBars, 500);
   }
 })();
 
@@ -241,7 +251,6 @@ function openWindow(id) {
   bringToFront(id);
   updateTaskbar();
   if (id === 'terminal-window') document.getElementById('terminal-input').focus();
-  if (id === 'skills-window')   setTimeout(animateSkillBars, 100);
 }
 
 function closeWindow(id) {
@@ -535,9 +544,3 @@ terminalInput.addEventListener('keydown', function(e) {
 document.querySelector('#terminal-window .terminal-body').addEventListener('click', function() {
   document.getElementById('terminal-input').focus();
 });
-
-function animateSkillBars() {
-  document.querySelectorAll('.skill-bar-inner[data-width]').forEach(function(bar) {
-    bar.style.width = bar.dataset.width + '%';
-  });
-}
