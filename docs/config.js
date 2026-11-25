@@ -171,7 +171,6 @@ const CONFIG = {
   projects: [
     { icon: "\u{1F9EE}", label: "Fully-Differential Op-Amp (SKY130)", desc: "Fully-differential op-amp with Class AB output stage - xschem + ngspice, SkyWater SKY130 PDK", url: "https://github.com/SemiQa/Diff-In-Diff-Out-OpAmp", folders: ["all", "ic"] },
     { icon: "\u{1F4D1}", label: "Bachelor Thesis - Statistical Analysis of SEM Images", desc: "B.Eng. thesis - statistical analysis of SEM images", url: "https://github.com/BMakx/DyplomBartek", folders: ["all", "dyplom", "github"] },
-    { icon: "\u{1F4BE}", label: "VHDL Project",      desc: "FPGA design in VHDL",                    url: "https://github.com/BMakx/VHDL-Project",        folders: ["all", "fpga", "github"] },
     { icon: "\u{1F52C}", label: "Nanopositioner",    desc: "KN NaMi project",                        url: "https://github.com/KN-NaMi/Nanopositioner",    folders: ["nami"] },
     { icon: "\u{1F52C}", label: "Tip Etcher",        desc: "KN NaMi project",                        url: "https://github.com/KN-NaMi/Tip-Etcher",        folders: ["nami"] },
     { icon: "\u{1F52C}", label: "Current Driver",    desc: "KN NaMi project",                        url: "https://github.com/KN-NaMi/Current-Driver",    folders: ["nami"] },
@@ -186,7 +185,6 @@ const CONFIG = {
   projectFolders: [
     { key: "all",    label: "All Projects" },
     { key: "ic",     label: "IC Design" },
-    { key: "fpga",   label: "FPGA" },
     { key: "nami",   label: "KN NaMi" },
     { key: "dyplom", label: "Bachelor Thesis" },
     { key: "github", label: "GitHub" },
