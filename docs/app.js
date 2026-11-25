@@ -344,7 +344,9 @@ function showProject(folderKey, clickedEl) {
   });
 
   container.innerHTML = items.map(function(p) {
-    return '<div class="explorer-item" ondblclick="window.open(\'' + p.url + '\',\'_blank\')">' +
+    return '<div class="explorer-item" title="' + (p.desc || '') + '"' +
+      ' onclick="selectProject(this,\'' + p.url + '\',\'' + (p.desc || p.label).replace(/'/g, "\\'") + '\')"' +
+      ' ondblclick="window.open(\'' + p.url + '\',\'_blank\')">' +
       '<span class="exp-icon">' + p.icon + '</span>' +
       '<span class="exp-label">' + p.label + '</span></div>';
   }).join('');
@@ -354,7 +356,23 @@ function showProject(folderKey, clickedEl) {
   document.querySelectorAll('.explorer-sidebar .tree-item').forEach(function(t) {
     t.classList.remove('active-tree');
   });
+  if (!clickedEl) clickedEl = document.querySelector('.explorer-sidebar .tree-item');
   if (clickedEl) clickedEl.classList.add('active-tree');
+}
+
+var isTouch = window.matchMedia('(pointer: coarse)').matches;
+
+function selectProject(el, url, desc) {
+  if (isTouch) { window.open(url, '_blank'); return; }
+  document.querySelectorAll('.explorer-item.selected').forEach(function(i) { i.classList.remove('selected'); });
+  el.classList.add('selected');
+  document.getElementById('explorer-status').textContent = desc;
+}
+
+if (isTouch) {
+  document.querySelectorAll('.desktop-icon').forEach(function(icon) {
+    icon.addEventListener('click', function() { icon.ondblclick(); });
+  });
 }
 
 var terminalOutput = document.getElementById('terminal-output');
@@ -365,6 +383,7 @@ var commands = {
     return 'Available commands:\n' +
       '  <span class="highlight">help</span>      - Show this message\n' +
       '  <span class="highlight">whoami</span>    - About me\n' +
+      '  <span class="highlight">experience</span>- Work experience\n' +
       '  <span class="highlight">skills</span>    - List technical skills\n' +
       '  <span class="highlight">contact</span>   - Contact information\n' +
       '  <span class="highlight">projects</span>  - List projects\n' +
@@ -381,7 +400,10 @@ var commands = {
 
   skills: function() {
     var h = '';
-    var cats = ['Intermediate', 'Beginner', 'Tools'];
+    var cats = [];
+    CONFIG.skills.forEach(function(s) {
+      if (s.category !== 'hidden' && cats.indexOf(s.category) === -1) cats.push(s.category);
+    });
     cats.forEach(function(cat) {
       var items = CONFIG.skills.filter(function(s) { return s.category === cat; });
       if (items.length) {
@@ -411,6 +433,12 @@ var commands = {
     return h;
   },
 
+  experience: function() {
+    return CONFIG.experience.map(function(job) {
+      return '<span class="highlight">' + job.date + '</span>  ' + job.title;
+    }).join('\n');
+  },
+
   education: function() {
     var h = '';
     CONFIG.education.forEach(function(edu) {
@@ -434,7 +462,7 @@ var commands = {
   neofetch: function() {
     return '<span class="highlight">       ______</span>          ' + CONFIG.name.split(' ')[0].toLowerCase() + '@makowski-pc\n' +
       '<span class="highlight">      / ____ \\</span>         -------------------\n' +
-      '<span class="highlight">     | |    | |</span>        <span class="highlight">OS:</span> Makowski OS v1.0\n' +
+      '<span class="highlight">     | |    | |</span>        <span class="highlight">OS:</span> Makowski OS v2.0\n' +
       '<span class="highlight">     | |    | |</span>        <span class="highlight">Host:</span> Portfolio Website\n' +
       '<span class="highlight">     | |____| |</span>        <span class="highlight">Uptime:</span> since 1999\n' +
       '<span class="highlight">     |  ____  |</span>        <span class="highlight">Shell:</span> cmd.exe\n' +

@@ -1,7 +1,7 @@
 const CONFIG = {
 
   name: "Bartosz Makowski",
-  title: "Smart Electronics Engineer | Microelectronics Enthusiast | Filmmaker",
+  title: "Electronics Engineer | Analog IC & FPGA Design | Filmmaker",
 
   photo: "",
 
@@ -13,16 +13,29 @@ const CONFIG = {
   website: "https://nami.pwr.edu.pl",
   websiteLabel: "KN NaMi",
 
-  aboutMe: `I'm an engineer of Smart Electronics pursuing a Master's degree in Electronic Mechatronics Systems at Wroclaw University of Science and Technology, consistently among the top of my year. I'm passionate about the latest advances in AI and thin-film technologies used in modern electronics.<br><br>As President of <b>KN NaMi</b>, I lead a research group focused on micro- and nanotechnology projects.<br><br>Beyond academics, I'm deeply passionate about cinematography and I dream of creating my own films. I also enjoy music production and birdwatching.`,
+  aboutMe: `I'm an engineer of Smart Electronics pursuing a Master's degree in Electronic Mechatronics Systems at Wroclaw University of Science and Technology, consistently among the top of my year. I work across the whole hardware stack - from transistor-level analog IC design and FPGA logic to PCBs and embedded firmware - and I'm passionate about thin-film technologies and the latest advances in AI.<br><br>At <b>SEMIQA</b> I worked as an IC Designer on mixed-signal chips, FPGA logic and PCBs. Until November 2026 I was President of <b>KN NaMi</b>, a student research group focused on micro- and nanotechnology projects.<br><br>Beyond academics, I'm deeply passionate about cinematography and I dream of creating my own films. I also enjoy music production and birdwatching.`,
 
   experience: [
     {
-      date: "01.2026 - present",
+      date: "05.2026 - 11.2026",
+      title: "IC Designer @ SEMIQA",
+      subtitle: "Wroclaw",
+      highlight: true,
+      bullets: [
+        "Mixed-signal integrated circuit design - schematic, simulation, layout",
+        "FPGA development in VHDL",
+        "PCB design and embedded firmware",
+        "3D mechanical design",
+        "Open-source result: <a href=\"https://github.com/SemiQa/Diff-In-Diff-Out-OpAmp\" target=\"_blank\">fully-differential op-amp with Class AB output stage (SKY130)</a>",
+      ],
+    },
+    {
+      date: "01.2026 - 11.2026",
       title: "President @ KN NaMi",
       subtitle: "Student Research Group - Micro & Nanotechnology, Wroclaw University of Science and Technology",
       highlight: true,
       bullets: [
-        "Leading the organization and representing it externally",
+        "Led the organization and represented it externally",
       ],
     },
     {
@@ -125,9 +138,15 @@ const CONFIG = {
   ],
 
   skills: [
+    { name: "Analog / mixed-signal IC design (SKY130)", level: 60, color: "blue", category: "Hardware", tag: true, tagLabel: "Analog IC design", tagStyle: "normal" },
+    { name: "xschem / ngspice / Magic", level: 60, color: "blue", category: "Hardware", tag: true, tagLabel: "xschem/ngspice/Magic", tagStyle: "normal" },
+    { name: "FPGA (Vivado)",   level: 60, color: "blue",   category: "Hardware",     tag: true, tagLabel: "Vivado",        tagStyle: "normal" },
+    { name: "PCB design (KiCad)", level: 65, color: "blue", category: "Hardware",    tag: true, tagLabel: "KiCad",         tagStyle: "normal" },
+    { name: "LTspice",         level: 65, color: "blue",   category: "Hardware",     tag: true, tagLabel: "LTspice",       tagStyle: "normal" },
     { name: "Python",          level: 85, color: "blue",   category: "Intermediate", tag: true, tagLabel: "Python",        tagStyle: "normal" },
-    { name: "C / C++ (HAL)",   level: 50, color: "blue",   category: "Intermediate", tag: true, tagLabel: "C/C++",         tagStyle: "normal" },
-    { name: "VHDL",            level: 40, color: "blue",   category: "Intermediate", tag: true, tagLabel: "VHDL",          tagStyle: "normal" },
+    { name: "VHDL",            level: 65, color: "blue",   category: "Intermediate", tag: true, tagLabel: "VHDL",          tagStyle: "normal" },
+    { name: "Verilog",         level: 50, color: "blue",   category: "Intermediate", tag: true, tagLabel: "Verilog",       tagStyle: "normal" },
+    { name: "C / C++ (HAL)",   level: 55, color: "blue",   category: "Intermediate", tag: true, tagLabel: "C/C++",         tagStyle: "normal" },
     { name: "scikit-learn",    level: 0,  color: "blue",   category: "hidden",       tag: true, tagLabel: "scikit-learn",  tagStyle: "normal" },
     { name: "NumPy",           level: 0,  color: "blue",   category: "hidden",       tag: true, tagLabel: "NumPy",         tagStyle: "normal" },
     { name: "Pandas",          level: 0,  color: "blue",   category: "hidden",       tag: true, tagLabel: "Pandas",        tagStyle: "normal" },
@@ -150,17 +169,28 @@ const CONFIG = {
   ],
 
   projects: [
-    { icon: "\u{1F4D1}", label: "Bachelor Thesis - Statistical Analysis of SEM Images", url: "https://github.com/BMakx/DyplomBartek", folders: ["all", "dyplom", "github"] },
-    { icon: "\u{1F4C4}", label: "Thesis (B.Eng.)",  url: "https://github.com/BMakx/DyplomBartek", folders: ["dyplom"] },
-    { icon: "\u{1F4C1}", label: "GitHub",            url: "https://github.com/BMakx",              folders: ["all", "github"] },
-    { icon: "\u{1F310}", label: "KN NaMi",           url: "https://nami.pwr.edu.pl",               folders: ["all", "nami"] },
-    { icon: "\u{1F52C}", label: "NaMi Research",     url: "https://nami.pwr.edu.pl",               folders: ["nami"] },
+    { icon: "\u{1F9EE}", label: "Fully-Differential Op-Amp (SKY130)", desc: "Fully-differential op-amp with Class AB output stage - xschem + ngspice, SkyWater SKY130 PDK", url: "https://github.com/SemiQa/Diff-In-Diff-Out-OpAmp", folders: ["all", "ic"] },
+    { icon: "\u{1F4D1}", label: "Bachelor Thesis - Statistical Analysis of SEM Images", desc: "B.Eng. thesis - statistical analysis of SEM images", url: "https://github.com/BMakx/DyplomBartek", folders: ["all", "dyplom", "github"] },
+    { icon: "\u{1F4BE}", label: "VHDL Project",      desc: "FPGA design in VHDL",                    url: "https://github.com/BMakx/VHDL-Project",        folders: ["all", "fpga", "github"] },
+    { icon: "\u{1F52C}", label: "Nanopositioner",    desc: "KN NaMi project",                        url: "https://github.com/KN-NaMi/Nanopositioner",    folders: ["nami"] },
+    { icon: "\u{1F52C}", label: "Tip Etcher",        desc: "KN NaMi project",                        url: "https://github.com/KN-NaMi/Tip-Etcher",        folders: ["nami"] },
+    { icon: "\u{1F52C}", label: "Current Driver",    desc: "KN NaMi project",                        url: "https://github.com/KN-NaMi/Current-Driver",    folders: ["nami"] },
+    { icon: "\u{1F52C}", label: "Lithography",       desc: "KN NaMi project",                        url: "https://github.com/KN-NaMi/Lithography",       folders: ["nami"] },
+    { icon: "\u{1F52C}", label: "Spin Coater",       desc: "KN NaMi project",                        url: "https://github.com/KN-NaMi/spin-coater",       folders: ["nami"] },
+    { icon: "\u{1F52C}", label: "Spin Coater BLDC",  desc: "KN NaMi project",                        url: "https://github.com/KN-NaMi/spin-coater-BLDC",  folders: ["nami"] },
+    { icon: "\u{1F310}", label: "KN NaMi",           desc: "Student research group - micro & nanotechnology", url: "https://nami.pwr.edu.pl", folders: ["all", "nami"] },
+    { icon: "\u{1F3B5}", label: "WebCamMusic",       desc: "Personal project",                       url: "https://github.com/BMakx/WebCamMusic",         folders: ["github"] },
+    { icon: "\u{1F3B9}", label: "DAWOnline",         desc: "Personal project",                       url: "https://github.com/BMakx/DAWOnline",           folders: ["github"] },
+    { icon: "\u{1F511}", label: "SecurityRFID",      desc: "Personal project",                       url: "https://github.com/BMakx/SecurityRFID",        folders: ["github"] },
+    { icon: "\u{1F4C1}", label: "GitHub",            desc: "All repositories",                       url: "https://github.com/BMakx",                     folders: ["all", "github"] },
   ],
 
   projectFolders: [
     { key: "all",    label: "All Projects" },
-    { key: "dyplom", label: "Bachelor Thesis" },
+    { key: "ic",     label: "IC Design" },
+    { key: "fpga",   label: "FPGA" },
     { key: "nami",   label: "KN NaMi" },
+    { key: "dyplom", label: "Bachelor Thesis" },
     { key: "github", label: "GitHub" },
   ],
 

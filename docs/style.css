@@ -154,7 +154,8 @@ html, body {
   position: fixed;
   inset: 0;
   bottom: 36px;
-  background: #015f1dfb;
+  background:
+    radial-gradient(ellipse at center, #0a7a34 0%, #015f1d 55%, #013d13 100%);
   display: none;
   overflow: hidden;
 }
@@ -830,4 +831,90 @@ html, body {
   border-color: #fafafa #5a5a5a #5a5a5a #fafafa;
   width: 16px;
   height: 16px;
+}
+
+#wallpaper-mark {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  font-family: 'VT323', monospace;
+  font-size: clamp(24px, 7vw, 96px);
+  color: rgba(255, 255, 255, 0.08);
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 4px;
+}
+
+#wallpaper-mark span {
+  display: block;
+  font-size: 0.35em;
+  letter-spacing: 6px;
+}
+
+.explorer-item.selected {
+  background: #000076;
+  color: #fff;
+  outline: 1px dotted #fff;
+  outline-offset: -2px;
+}
+
+.word-page a {
+  color: #304263;
+}
+
+@media (max-width: 700px) {
+  .desktop-icon {
+    position: static;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px 4px;
+  }
+
+  #desktop {
+    padding: 6px;
+  }
+
+  .win95-window,
+  .win95-window.maximized {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0;
+  }
+
+  .title-bar {
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .title-bar-controls button {
+    width: 26px;
+    height: 22px;
+    font-size: 12px;
+  }
+
+  .word-document { padding: 8px; }
+
+  .word-page {
+    width: 100%;
+    min-height: 0;
+    padding: 20px;
+    font-size: 11pt;
+  }
+
+  .word-page .entry-date {
+    float: none;
+    display: block;
+  }
+
+  .word-toolbar,
+  .word-ruler,
+  .menu-bar { display: none; }
+
+  .explorer-sidebar { width: 110px; }
+
+  .taskbar-item { min-width: 70px; }
 }
