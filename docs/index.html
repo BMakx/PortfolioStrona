@@ -167,7 +167,7 @@
       </div>
     </div>
 
-    <div class="win95-window" id="skills-window" style="top:60px; left:200px; width:520px; height:460px;">
+    <div class="win95-window" id="skills-window" style="top:60px; left:200px; width:540px; height:400px;">
       <div class="title-bar" onmousedown="startDrag(event,'skills-window')">
         <span class="title-bar-text">My Computer - Skills &amp; Technologies</span>
         <div class="title-bar-controls">
@@ -176,8 +176,18 @@
           <button onclick="closeWindow('skills-window')">X</button>
         </div>
       </div>
-      <div class="window-body" style="background:#c0c0c0;">
-        <div id="skills-content" class="skills-content"></div>
+      <div class="menu-bar">
+        <span>File</span><span>Edit</span><span>View</span><span>Help</span>
+      </div>
+      <div class="window-body mycomp-body">
+        <div id="drive-row" class="drive-row"></div>
+        <div class="listview">
+          <div class="lv-head"><span class="lv-name">Name</span><span class="lv-level">Level</span></div>
+          <div id="skills-content"></div>
+        </div>
+      </div>
+      <div class="status-bar">
+        <div class="status-bar-field" style="flex:1;" id="skills-status"></div>
       </div>
     </div>
 

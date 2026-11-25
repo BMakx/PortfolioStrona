@@ -607,49 +607,103 @@ html, body {
   word-wrap: break-word;
 }
 
-.skills-content {
-  padding: 16px;
-  overflow: auto;
-  font-size: 12px;
-}
-
-.skills-content h3 {
-  font-size: 13px;
-  color: #00007c;
-  margin: 10px 0 6px;
-  border-bottom: 1px solid #c0c0c0;
-  padding-bottom: 2px;
-}
-
-.skills-content h3:first-child {
-  margin-top: 0;
-}
-
-.skill-bar-wrap {
-  margin-bottom: 6px;
-}
-
-.skill-bar-label {
-  margin-bottom: 2px;
-  font-weight: bold;
-}
-
-.skill-bar-outer {
-  height: 16px;
+.mycomp-body {
+  display: flex;
+  flex-direction: column;
   background: #fff;
-  border: 1px inset;
-  border-color: grey #fff #fff grey;
 }
 
-.skill-bar-inner {
+.drive-row {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 1px solid #c0c0c0;
+  flex-shrink: 0;
+}
+
+.drive {
+  width: 96px;
+  padding: 4px 2px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.drive svg { display: block; margin: 0 auto 4px; }
+
+.drive.selected span {
+  background: #000076;
+  color: #fff;
+  outline: 1px dotted #fff;
+  outline-offset: -1px;
+  padding: 0 2px;
+}
+
+.listview {
+  flex: 1;
+  overflow: auto;
+  font-size: 11px;
+}
+
+.lv-head,
+.lv-row {
+  display: flex;
+  align-items: center;
+}
+
+.lv-head {
+  position: sticky;
+  top: 0;
+  background: #c0c0c0;
+}
+
+.lv-head span {
+  border: 1px solid;
+  border-color: #fff #808080 #808080 #fff;
+  padding: 2px 6px;
+}
+
+.lv-row { padding: 3px 0; }
+.lv-row:hover { background: #000076; color: #fff; }
+.lv-row:hover .lv-bar { border-color: #fff; }
+
+.lv-name {
+  flex: 1;
+  padding: 0 6px;
+  min-width: 0;
+}
+
+.lv-level {
+  width: 190px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 6px;
+  flex-shrink: 0;
+}
+
+.lv-head .lv-name,
+.lv-head .lv-level { padding: 2px 6px; }
+
+.lv-bar {
+  width: 100px;
+  height: 12px;
+  padding: 1px;
+  border: 1px solid;
+  border-color: #808080 #dfdfdf #dfdfdf #808080;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.lv-bar .skill-bar-inner {
+  display: block;
   height: 100%;
-  transition: width 1s ease;
   width: 0%;
+  transition: width 0.8s steps(10);
+  background: repeating-linear-gradient(90deg, #00007c 0 8px, transparent 8px 10px);
 }
 
-.skill-bar-inner.blue   { background: #00007c; }
-.skill-bar-inner.green  { background: #4caf50; }
-.skill-bar-inner.yellow { background: #d4af37; }
+.lv-text { width: 62px; }
 
 #taskbar {
   position: fixed;

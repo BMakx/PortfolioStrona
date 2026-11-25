@@ -23,7 +23,7 @@ function buildPage() {
   document.getElementById('about-links').innerHTML = buildAboutLinks();
 
   document.getElementById('cv-content').innerHTML = buildCVContent();
-  document.getElementById('skills-content').innerHTML = buildSkillBars();
+  buildMyComputer();
   document.getElementById('explorer-sidebar').innerHTML = buildExplorerSidebar();
   showProject('all', null);
   document.getElementById('start-menu-links').innerHTML = buildStartMenuLinks();
@@ -93,29 +93,49 @@ function buildEntry(item) {
   return h;
 }
 
-function buildSkillBars() {
-  var categories = [];
-  var seen = {};
+function skillCategories() {
+  var cats = [];
   CONFIG.skills.forEach(function(s) {
-    if (s.category === 'hidden') return;
-    if (!seen[s.category]) {
-      seen[s.category] = true;
-      categories.push(s.category);
-    }
+    if (s.category !== 'hidden' && cats.indexOf(s.category) === -1) cats.push(s.category);
   });
+  return cats;
+}
 
-  var h = '';
-  categories.forEach(function(cat) {
-    h += '<h3>' + cat + '</h3>';
-    CONFIG.skills.forEach(function(s) {
-      if (s.category !== cat) return;
-      h += '<div class="skill-bar-wrap">';
-      h += '<div class="skill-bar-label">' + s.name + '</div>';
-      h += '<div class="skill-bar-outer"><div class="skill-bar-inner ' + s.color + '" data-width="' + s.level + '"></div></div>';
-      h += '</div>';
-    });
+function levelLabel(level) {
+  if (level >= 75) return 'Advanced';
+  if (level >= 55) return 'Proficient';
+  return 'Basic';
+}
+
+var DRIVE_SVG = '<svg viewBox="0 0 48 32" width="48" height="32">' +
+  '<rect x="2" y="8" width="44" height="18" fill="#c0c0c0" stroke="#000" stroke-width="2"/>' +
+  '<rect x="4" y="10" width="40" height="3" fill="#fff"/>' +
+  '<rect x="8" y="18" width="20" height="3" fill="#808080"/>' +
+  '<rect x="36" y="18" width="5" height="3" fill="#0c0"/></svg>';
+
+function buildMyComputer() {
+  var cats = skillCategories();
+  document.getElementById('drive-row').innerHTML = cats.map(function(cat, i) {
+    var letter = String.fromCharCode(67 + i);
+    return '<div class="drive" data-cat="' + cat + '" onclick="showDrive(\'' + cat + '\')">' +
+      DRIVE_SVG + '<span>' + cat + ' (' + letter + ':)</span></div>';
+  }).join('');
+  showDrive(cats[0]);
+}
+
+function showDrive(cat) {
+  var items = CONFIG.skills.filter(function(s) { return s.category === cat; })
+    .sort(function(a, b) { return b.level - a.level; });
+  document.getElementById('skills-content').innerHTML = items.map(function(s) {
+    return '<div class="lv-row"><span class="lv-name">' + s.name + '</span>' +
+      '<span class="lv-level"><span class="lv-bar"><span class="skill-bar-inner" data-width="' + Math.round(s.level / 10) * 10 + '"></span></span>' +
+      '<span class="lv-text">' + levelLabel(s.level) + '</span></span></div>';
+  }).join('');
+  document.querySelectorAll('.drive').forEach(function(d) {
+    d.classList.toggle('selected', d.dataset.cat === cat);
   });
-  return h;
+  document.getElementById('skills-status').textContent = items.length + ' object(s)';
+  setTimeout(animateSkillBars, 50);
 }
 
 function buildExplorerSidebar() {
