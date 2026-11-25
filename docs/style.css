@@ -847,12 +847,6 @@ html, body {
   letter-spacing: 4px;
 }
 
-#wallpaper-mark span {
-  display: block;
-  font-size: 0.35em;
-  letter-spacing: 6px;
-}
-
 .explorer-item.selected {
   background: #000076;
   color: #fff;
